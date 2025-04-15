@@ -1,0 +1,170 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #255F38, #030303);
+    color: white;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box; 
+    overflow: hidden; 
+}
+
+#logo {
+    height: 75px;
+    width: 75px;
+    cursor: pointer;
+}
+
+nav ul {
+    list-style: none;
+    display: flex; 
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 1rem; 
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #18230F;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 5px 10px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    border: 2px solid #18230F;
+    border-radius: 12px;
+    color: white;
+}
+
+nav .right-items {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: nowrap; 
+}
+
+#menu {
+    display: flex; 
+    gap: 0.5rem; 
+}
+
+#menu a {
+    text-decoration: none;
+    color: #18230F;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 5px 10px;
+    transition: 0.3s;
+}
+
+#menu a:hover {
+    border: 2px solid #18230F;
+    border-radius: 12px;
+    color: white;
+}
+
+#carrito-logo {
+    height: 35px; 
+    width: 35px;
+    cursor: pointer;
+}
+
+#main-content {
+    padding-top: 100px; 
+    background: (to bottom, #255F38, #030303);
+}
+
+.custom-button {
+    background-color: #030303;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-button:hover {
+    background-color: gray;
+}
+
+#product-list {
+    margin-top: 50px; 
+}
+
+.product-item {
+    background-color: #255F38;
+    color: white;
+    padding: 1rem;
+    margin: 1rem auto;
+    border-radius: 8px;
+    text-align: center;
+    width: 90%; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#card-modal {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    background: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1000;
+    max-width: 300px;
+}
+
+#clear-card-btn {
+    background: #255F38;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#clear-card-btn:hover {
+    background: darkgray;
+}
+
+#close-modal-btn {
+    background: gray;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#close-modal-btn:hover {
+    background: black;
+}
+
+#card-count {
+    background: black;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    position: absolute;
+    font-size: 0.8rem;
+    top: 0;
+    right: 0;
+    display: none;
+}
