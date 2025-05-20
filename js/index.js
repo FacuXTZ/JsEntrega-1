@@ -2,91 +2,100 @@ const productos = [
     { id: 1, nombre: "Adidas Samba XLG", precio: 190000 },
     { id: 2, nombre: "Nike Air Jordan 4 Retro, Oxidized Green", precio: 400000 },
     { id: 3, nombre: "Nike Dunk SB Low Lottery Green", precio: 250000 },
-    { id: 4, nombre: "DC Graveler Green", precio: 60000 },
+    { id: 4, nombre: "DC Gaveler Green", precio: 60000 },
     { id: 5, nombre: "Under Armour E-base Pacer Lam", precio: 100000 },
 ];
 
 function cargarProductos() {
-    const productList = document.getElementById("product-list");
-    productList.innerHTML = "";
-    productos.forEach(producto => {
-        const item = document.createElement("div");
-        item.className = "product-item";
-        
-        const productoTexto = document.createElement("p");
-        productoTexto.textContent = `${producto.nombre} - $${producto.precio}`;
-        
-        const botonAgregar = document.createElement("button");
-        botonAgregar.className = "custom-button";
-        botonAgregar.textContent = "Agregar al carrito";
-
-        botonAgregar.addEventListener("click", () => agregarAlCarrito(producto.id));
-
-        item.appendChild(productoTexto);
-        item.appendChild(botonAgregar);
-        productList.appendChild(item);
-    });
+    document.getElementById("product-list").innerHTML = productos.map(({ id, nombre, precio }) => `
+        <div class="product-item">
+            <p>${nombre} - $${precio}</p>
+            <button class="custom-button" onclick="agregarAlCarrito(${id})">Agregar al carrito</button>
+        </div>
+    `).join('');
 }
 
 function actualizarCarrito() {
-    const cartItems = document.getElementById("card-items");
-    const carritoSection = document.getElementById("card");
-    cartItems.innerHTML = "";
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    carrito.forEach(producto => {
-        const item = document.createElement("li");
-        item.textContent = `${producto.nombre} - $${producto.precio}`;
-        cartItems.appendChild(item);
-    });
-    carritoSection.style.display = carrito.length > 0 ? "block" : "none"; 
+    const modalCartItems = document.getElementById("modal-card-items");
+    const cartCount = document.getElementById("card-count");
+
+    modalCartItems.innerHTML = carrito.length
+        ? carrito.map(({ id, nombre, precio, cantidad }) => `
+            <li>
+                ${nombre} - $${precio} x ${cantidad}
+                <button class="small-btn" onclick="modificarCantidad(${id}, 1)">+</button>
+                <button class="small-btn" onclick="modificarCantidad(${id}, -1)">-</button>
+            </li>
+        `).join('')
+        : "<p>El carrito está vacío</p>";
+
+    cartCount.textContent = carrito.reduce((sum, p) => sum + p.cantidad, 0);
+    cartCount.style.display = carrito.length ? "block" : "none";
 }
 
 function agregarAlCarrito(productId) {
-    const producto = productos.find(p => p.id === productId);
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    let producto = carrito.find(p => p.id === productId);
+
     if (producto) {
-        const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        producto.cantidad++;
+    } else {
+        producto = { ...productos.find(p => p.id === productId), cantidad: 1 };
         carrito.push(producto);
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    actualizarCarrito();
+}
+
+function modificarCantidad(productId, cambio) {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const producto = carrito.find(p => p.id === productId);
+
+    if (producto) {
+        producto.cantidad += cambio;
+        if (producto.cantidad <= 0) carrito.splice(carrito.indexOf(producto), 1);
         localStorage.setItem("carrito", JSON.stringify(carrito));
-
-        const cartCount = document.getElementById("card-count");
-        cartCount.textContent = carrito.length;
-        cartCount.style.display = carrito.length > 0 ? "block" : "none";
-
-        actualizarCarrito(); 
+        actualizarCarrito();
     }
 }
 
 document.getElementById("carrito-logo").addEventListener("click", () => {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const modalCartItems = document.getElementById("modal-card-items");
-    modalCartItems.innerHTML = ""; 
-
-    carrito.forEach(producto => {
-        const item = document.createElement("li");
-        item.textContent = `${producto.nombre} - $${producto.precio}`;
-        modalCartItems.appendChild(item);
-    });
-
-    const cartModal = document.getElementById("card-modal");
-    cartModal.style.display = "block"; 
+    const cardModal = document.getElementById("card-modal");
+    cardModal.style.display = cardModal.style.display === "block" ? "none" : "block";
 });
 
 document.getElementById("close-modal-btn").addEventListener("click", () => {
-    const cartModal = document.getElementById("card-modal");
-    cartModal.style.display = "none";
+    document.getElementById("card-modal").style.display = "none";
 });
 
-document.getElementById("clear-card-btn").addEventListener("click", () => {
-    localStorage.removeItem("carrito"); 
-    actualizarCarrito(); 
-    const cartCount = document.getElementById("card-count");
-    cartCount.textContent = "0"; 
-    cartCount.style.display = "none";
-    const modalCartItems = document.getElementById("modal-card-items");
-    modalCartItems.innerHTML = ""; 
+document.getElementById("finalizar-compra-btn").addEventListener("click", () => { 
+    window.location.href = "metodos_pago.html"; 
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    cargarProductos();
-    actualizarCarrito();
+window.addEventListener("load", () => {
+    iniciarCarrusel();
 });
+
+function iniciarCarrusel() {
+    const productos = document.querySelectorAll(".producto");
+    let index = 0;
+
+    function updateCarrusel() {
+        productos.forEach(producto => producto.style.display = "none");
+        productos[index].style.display = "block";
+    }
+
+    document.getElementById("next-btn").addEventListener("click", () => {
+        index = (index + 1) % productos.length;
+        updateCarrusel();
+    });
+
+    document.getElementById("prev-btn").addEventListener("click", () => {
+        index = (index - 1 + productos.length) % productos.length;
+        updateCarrusel();
+    });
+
+    updateCarrusel(); 
+}

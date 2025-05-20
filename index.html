@@ -19,30 +19,72 @@
                     <a href="#" id="inicio">Inicio</a>
                     <a href="#" id="sneakers">Sneakers</a>
                 </div>
-                <img src="./assets/carrito-de-compras.webp" alt="Carrito" id="carrito-logo">
-                <span id="card-count" class="cart-count">0</span>
+                <div class="carrito-container">
+                    <img src="./assets/carrito-de-compras.webp" alt="Carrito" id="carrito-logo">
+                    <span id="card-count" class="cart-count">0</span>
+                </div>
             </div>
         </nav>
     </header>
 
+    <main id="main-content">
+        <section id="product-list">
+
+        </section>
+    </main>
+
     <div id="card-modal" class="modal">
         <h3>Productos en el carrito:</h3>
         <ul id="modal-card-items"></ul>
-        <button id="clear-card-btn" class="clear-btn">Vaciar Carrito</button>
+        <p id="total-compra"></p>
+        <button id="finalizar-compra-btn" class="finalizar-btn">Finalizar compra</button>
         <button id="close-modal-btn" class="close-btn">Cerrar</button>
     </div>
-</body>
 
-<main id="main-content">
-    <section id="product-list">
-
+    <section id="productos-container">
+        <div class="producto">
+            <img src="./assets/Adidas-Samba-XLG-ver-3.webp" alt="Adidas Samba XLG">
+            <div class="detalle-producto">
+                <p class="nombre">Adidas Samba XLG</p>
+                <p class="precio">$190.000</p>
+                <button class="agregar-btn">Agregar al carrito</button>
+            </div>
+        </div>
+        <div class="producto">
+            <img src="./assets/J4-GREEN-3.webp" alt="Nike Air Jordan 4">
+            <div class="detalle-producto">
+                <p class="nombre">Nike Air Jordan 4</p>
+                <p class="precio">$400.000</p>
+                <button class="agregar-btn">Agregar al carrito</button>
+            </div>
+        </div>
+        <div class="producto">
+            <img src="./assets/Nike-Dunk-Low-SE-Lottery.webp" alt="Nike Dunk SB Low">
+            <div class="detalle-producto">
+                <p class="nombre">Nike Dunk SB Low</p>
+                <p class="precio">$250.000</p>
+                <button class="agregar-btn">Agregar al carrito</button>
+            </div>
+        </div>
+        <div class="producto">
+            <img src="./assets/DC-green-1.webp" alt="DC Gaveler Green">
+            <div class="detalle-producto">
+                <p class="nombre">DC Gaveler Green</p>
+                <p class="precio">$60.000</p>
+                <button class="agregar-btn">Agregar al carrito</button>
+            </div>
+        </div>
+        <div class="producto">
+            <img src="./assets/UnderArmour-Green-3.webp" alt="Under Armour E-base Pacer Lam">
+            <div class="detalle-producto">
+                <p class="nombre">Under Armour E-base Pacer Lam</p>
+                <p class="precio">$100.000</p>
+                <button class="agregar-btn">Agregar al carrito</button>
+            </div>
+        </div>
     </section>
-    <section id="card">
-        <ul id="card-items">
 
-        </ul>
-    </section>
-</main>
+
 </body>
 
 </html>
