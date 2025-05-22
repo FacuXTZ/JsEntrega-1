@@ -179,15 +179,17 @@ nav .right-items {
 .producto {
     text-align: center;
     background: #255F38;
-    padding: 10px;
-    border-radius: 8px;
-    width: 180px; 
+    padding: 15px;
+    border-radius: 10px;
+    width: 220px;
+    height: 300px;
     transition: transform 0.3s;
+    position: relative;
 }
 
 .producto img {
     width: 100%;
-    max-width: 150px;
+    max-width: 180px;
     border-radius: 6px;
 }
 
@@ -204,21 +206,31 @@ nav .right-items {
 
 .precio {
     font-size: 14px;
-    color: #ffcc00;
+    color: #000000;
 }
 
 .agregar-btn {
+    display: none; 
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     background: black;
     color: white;
-    padding: 8px;
+    padding: 10px;
     border: none;
     cursor: pointer;
-    width: 90%;
-    font-size: 12px;
+    width: 95%;
+    font-size: 14px;
     border-radius: 5px;
-    transition: background 0.3s;
+    transition: background 0.3s, opacity 0.3s;
+    opacity: 0; 
 }
-
 .agregar-btn:hover {
     background: #333;
+}
+
+.producto:hover .agregar-btn {
+    display: block;
+    opacity: 1; 
 }
