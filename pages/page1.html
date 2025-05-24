@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/zapatillas.css">
+    <script defer src="../js/zapas-main.js"></script>
+    <link rel="icon" href="../assets/zapatos icono.ico" type="image/ico">
+    <title>ZAPATILLAS JORDAN 1 MID</title>
+</head>
+
+<body>
+    <div class="product-container">
+        <div class="image-section">
+            <div class="thumbnails">
+                <img src="../assets/J4-Green.webp" alt="Vista superior" class="thumb"
+                    onclick="changeImage('../assets/J4-Green.webp')">
+                <img src="../assets/J4-GREEN-2.webp" alt="Vista lateral 1" class="thumb"
+                    onclick="changeImage('../assets/J4-Green-2.webp')">
+                <img src="../assets/J4-GREEN-3.webp" alt="Vista lateral 2" class="thumb"
+                    onclick="changeImage('../assets/J4-Green-3.webp')">
+                <button class="arrow" onclick="nextImage()">&#9660;</button>
+            </div>
+            <div class="main-image">
+                <img id="displayed-image" src="../assets/J4-Green.webp" alt="Jordan 4 Green">
+            </div>
+        </div>
+        <div class="product-details">
+            <h1>Jordan 4 Green</h1>
+            <p class="price">$400.000</p>
+            <p class="financing">1 cuota sin interés de $400.000</p>
+            <p class="financing">3 cuotas sin interés de $133.333</p>
+            <button id="add-to-cart">Agregar al carrito</button>
+        </div>
+    </div>
+</body>
+
+</html>
