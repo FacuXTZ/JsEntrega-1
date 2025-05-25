@@ -42,6 +42,8 @@ function agregarAlCarrito(producto) {
 }
 
 document.getElementById("finalizar-compra-btn").addEventListener("click", function () {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    localStorage.setItem("carritoFinalizado", JSON.stringify(carrito)); 
     window.location.href = "./pages/finalizar_compra.html"; 
 });
 
@@ -53,7 +55,7 @@ function actualizarCarrito() {
     modalCartItems.innerHTML = carrito.length
         ? carrito.map(({ id, nombre, precio, imagen, cantidad }) => `
             <li class="cart-item">
-                <img src="${imagen}" alt="${nombre}" class="cart-image">
+                <img src="${imagen.startsWith("./") ? imagen : "./" + imagen}" alt="${nombre}" class="cart-image">
                 <div class="product-info">
                     <p>${nombre} x ${cantidad}</p>
                     <p>Precio total: $${precio * cantidad}</p>
@@ -69,7 +71,6 @@ function actualizarCarrito() {
 
     actualizarTotal();
 }
-
 function actualizarTotal() {
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     const totalPrice = document.getElementById("total-price");

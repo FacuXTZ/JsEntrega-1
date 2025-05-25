@@ -110,5 +110,7 @@ document.getElementById("close-modal-btn").addEventListener("click", () => {
 });
 
 document.getElementById("finalizar-compra-btn").addEventListener("click", function () {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    localStorage.setItem("carritoFinalizado", JSON.stringify(carrito));
     window.location.href = "./pages/finalizar_compra.html"; 
 });
