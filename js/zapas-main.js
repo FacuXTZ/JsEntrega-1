@@ -2,13 +2,13 @@ const zapatillaSeleccionada = {
     id: 1,
     nombre: "Jordan 4 Green",
     precio: 400000,
-    imagen: "./assets/J4-Green-3.webp"
+    imagen: "../assets/J4-Green-3.webp"
 };
 
 const images = [
-    "./assets/J4-Green.webp",
-    "./assets/J4-GREEN-2.webp",
-    "./assets/J4-GREEN-3.webp"
+    "../assets/J4-Green.webp",
+    "../assets/J4-GREEN-2.webp",
+    "../assets/J4-GREEN-3.webp"
 ];
 let currentIndex = 0;
 
@@ -42,9 +42,7 @@ function agregarAlCarrito(producto) {
 }
 
 document.getElementById("finalizar-compra-btn").addEventListener("click", function () {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    localStorage.setItem("carritoFinalizado", JSON.stringify(carrito)); 
-    window.location.href = "./pages/finalizar_compra.html"; 
+    window.location.href = "../pages/finalizar_compra.html"; 
 });
 
 function actualizarCarrito() {
@@ -55,7 +53,7 @@ function actualizarCarrito() {
     modalCartItems.innerHTML = carrito.length
         ? carrito.map(({ id, nombre, precio, imagen, cantidad }) => `
             <li class="cart-item">
-                <img src="${imagen.startsWith("./") ? imagen : "./" + imagen}" alt="${nombre}" class="cart-image">
+                <img src="${imagen}" alt="${nombre}" class="cart-image">
                 <div class="product-info">
                     <p>${nombre} x ${cantidad}</p>
                     <p>Precio total: $${precio * cantidad}</p>
@@ -71,6 +69,7 @@ function actualizarCarrito() {
 
     actualizarTotal();
 }
+
 function actualizarTotal() {
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     const totalPrice = document.getElementById("total-price");

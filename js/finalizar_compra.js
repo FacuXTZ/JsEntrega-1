@@ -1,32 +1,31 @@
-const carrito = JSON.parse(localStorage.getItem("carritoFinalizado")) || [];
+const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 const listaProductos = document.getElementById("lista-productos");
 const totalCompra = document.getElementById("total-compra");
 const imagenProducto = document.getElementById("producto-imagen");
+const metodoPago = document.getElementsByName("pago");
 
 let total = 0;
 
 if (carrito.length > 0) {
-    listaProductos.innerHTML = carrito.map(({ nombre, precio, cantidad, imagen }) => `
+    const primerProducto = carrito[0];
+
+    imagenProducto.src = `../assets/${primerProducto.imagen.split('/').pop()}`;
+    imagenProducto.alt = primerProducto.nombre;
+
+    listaProductos.innerHTML = `
         <div class="producto-carrito">
-            <img src="${imagen}" alt="${nombre}" class="producto-img">
-            <div class="producto-info">
-                <p>${nombre} x ${cantidad}</p>
-                <p>Precio total: $${precio * cantidad}</p>
-            </div>
+            <p>${primerProducto.nombre}</p>
+            <p>Precio: $${primerProducto.precio}</p>
         </div>
-    `).join("");
+    `;
 
-    total = carrito.reduce((sum, p) => sum + (p.precio * p.cantidad), 0);
-
-    imagenProducto.src = carrito[0].imagen;
-    imagenProducto.alt = carrito[0].nombre;
+    total = primerProducto.precio;
 } else {
     listaProductos.innerHTML = "<p>Tu carrito está vacío</p>";
-    imagenProducto.style.display = "none";
+    imagenProducto.style.display = "none"; 
 }
 
 totalCompra.textContent = `$${total}`;
-
 
 document.querySelectorAll('input[name="pago"]').forEach((input) => {
     input.addEventListener("change", function () {
@@ -63,7 +62,7 @@ function mostrarNotificacion() {
         notificacion.style.opacity = "0";
         setTimeout(() => {
             notificacion.classList.add("hidden");
-            window.location.href = "./index.html"; 
+            window.location.href = "../index.html"; 
         }, 500);
     }, 3000);
 }
