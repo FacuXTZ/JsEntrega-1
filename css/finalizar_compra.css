@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #255F38, #030303);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+}
+
+main {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+    background: #255F38
+}
+
+.resumen-compra, .metodos-pago {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.total {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.total span {
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+label {
+    display: block;
+    padding: 5px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #388E3C;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+#compra-notificacion {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50; 
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
+
+.imagen-producto-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#producto-imagen {
+    width: 200px;
+    border-radius: 10px;
+}

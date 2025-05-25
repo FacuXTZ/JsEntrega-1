@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script defer src="./js/index.js"></script>
     <link rel="icon" href="./assets/zapatos icono.ico" type="image/ico">
     <title>Sneaker Jam</title>
@@ -16,8 +17,12 @@
             <img src="./assets/zapatos.webp" alt="Logo de la tienda" id="logo">
             <div class="right-items">
                 <div id="menu">
-                    <a href="#" id="inicio">Inicio</a>
+                    <a href="index.html" id="inicio">Inicio</a>
                     <a href="#" id="sneakers">Sneakers</a>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="">
+                    <button id="search-button"><i class="fa fa-search"></i></button>
                 </div>
                 <div class="carrito-container">
                     <img src="./assets/carrito-de-compras.webp" alt="Carrito" id="carrito-logo">
@@ -33,13 +38,14 @@
         </section>
     </main>
 
-    <div id="card-modal" class="modal">
+    <div id="card-modal">
         <h3>Carrito</h3>
         <ul id="modal-card-items"></ul>
-        <p id="total-compra"></p>
+        <p id="total-price">Total: $0</p>
         <button id="finalizar-compra-btn" class="finalizar-btn">Finalizar compra</button>
         <button id="close-modal-btn" class="close-btn">Cerrar</button>
     </div>
+
 
     <section id="productos-container">
         <div class="producto">
@@ -51,7 +57,9 @@
             </div>
         </div>
         <div class="producto">
-            <img src="./assets/J4-GREEN-3.webp" alt="Nike Air Jordan 4">
+            <a href="./pages/page1.html">
+                <img src="./assets/J4-GREEN-3.webp" alt="Nike Air Jordan 4">
+            </a>
             <div class="detalle-producto">
                 <p class="nombre">Nike Air Jordan 4</p>
                 <p class="precio">$400.000</p>
@@ -67,7 +75,7 @@
             </div>
         </div>
         <div class="producto">
-            <img src="./assets/DC-green-1.webp" alt="DC Gaveler Green" style="width: 150px; height: 150px;">
+            <img src="./assets/DC-green-1.webp" alt="DC Gaveler Green" style="height: 180px;">
             <div class="detalle-producto">
                 <p class="nombre">DC Gaveler Green</p>
                 <p class="precio">$60.000</p>
@@ -82,9 +90,8 @@
                 <button class="agregar-btn">Agregar al carrito</button>
             </div>
         </div>
+        <div id="notification" class="hidden">Agregaste el producto al carrito</div>
     </section>
-
-
 </body>
 
 </html>
