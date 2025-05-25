@@ -6,30 +6,27 @@ const imagenProducto = document.getElementById("producto-imagen");
 let total = 0;
 
 if (carrito.length > 0) {
-    const productoSeleccionado = carrito.find(p => p.id === 1); // Tomamos el producto específico
-
-    if (productoSeleccionado) {
-        imagenProducto.src = productoSeleccionado.imagen;
-        imagenProducto.alt = productoSeleccionado.nombre;
-
-        listaProductos.innerHTML = `
-            <div class="producto-carrito">
-                <p>${productoSeleccionado.nombre} x ${productoSeleccionado.cantidad}</p>
-                <p>Precio total: $${productoSeleccionado.precio * productoSeleccionado.cantidad}</p>
+    listaProductos.innerHTML = carrito.map(({ nombre, precio, cantidad, imagen }) => `
+        <div class="producto-carrito">
+            <img src="${imagen}" alt="${nombre}" class="producto-img">
+            <div class="producto-info">
+                <p>${nombre} x ${cantidad}</p>
+                <p>Precio total: $${precio * cantidad}</p>
             </div>
-        `;
+        </div>
+    `).join("");
 
-        total = productoSeleccionado.precio * productoSeleccionado.cantidad;
-    } else {
-        listaProductos.innerHTML = "<p>Tu carrito está vacío</p>";
-        imagenProducto.style.display = "none";
-    }
+    total = carrito.reduce((sum, p) => sum + (p.precio * p.cantidad), 0);
+
+    imagenProducto.src = carrito[0].imagen;
+    imagenProducto.alt = carrito[0].nombre;
 } else {
     listaProductos.innerHTML = "<p>Tu carrito está vacío</p>";
     imagenProducto.style.display = "none";
 }
 
 totalCompra.textContent = `$${total}`;
+
 
 document.querySelectorAll('input[name="pago"]').forEach((input) => {
     input.addEventListener("change", function () {
