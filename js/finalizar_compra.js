@@ -9,7 +9,7 @@ let total = 0;
 if (carrito.length > 0) {
     const primerProducto = carrito[0]; 
 
-    imagenProducto.src = `../assets/${primerProducto.imagen.split('/').pop()}`;
+    imagenProducto.src = `./assets/${primerProducto.imagen.split('/').pop()}`;
     imagenProducto.alt = primerProducto.nombre;
 
     listaProductos.innerHTML = `
@@ -62,7 +62,7 @@ function mostrarNotificacion() {
         notificacion.style.opacity = "0";
         setTimeout(() => {
             notificacion.classList.add("hidden");
-            window.location.href = "../index.html"; 
+            window.location.href = "./index.html"; 
         }, 500);
     }, 3000);
 }

@@ -2,13 +2,13 @@ const zapatillaSeleccionada = {
     id: 1,
     nombre: "Jordan 4 Green",
     precio: 400000,
-    imagen: "../assets/J4-Green-3.webp"
+    imagen: "./assets/J4-Green-3.webp"
 };
 
 const images = [
-    "../assets/J4-Green.webp",
-    "../assets/J4-GREEN-2.webp",
-    "../assets/J4-GREEN-3.webp"
+    "./assets/J4-Green.webp",
+    "./assets/J4-GREEN-2.webp",
+    "./assets/J4-GREEN-3.webp"
 ];
 let currentIndex = 0;
 
@@ -42,7 +42,7 @@ function agregarAlCarrito(producto) {
 }
 
 document.getElementById("finalizar-compra-btn").addEventListener("click", function () {
-    window.location.href = "../pages/finalizar_compra.html"; 
+    window.location.href = "./pages/finalizar_compra.html"; 
 });
 
 function actualizarCarrito() {
