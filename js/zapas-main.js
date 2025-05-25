@@ -31,7 +31,11 @@ function agregarAlCarrito(producto) {
     if (productoExistente) {
         productoExistente.cantidad++;
     } else {
-        carrito.push({ ...producto, cantidad: 1 });
+        carrito.push({ 
+            ...producto, 
+            cantidad: 1,
+            imagen: producto.imagen  
+        });
     }
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -51,18 +55,18 @@ function actualizarCarrito() {
     const cartCount = document.getElementById("card-count");
 
     modalCartItems.innerHTML = carrito.length
-        ? carrito.map(({ id, nombre, precio, imagen, cantidad }) => `
-            <li class="cart-item">
-                <img src="${imagen}" alt="${nombre}" class="cart-image">
-                <div class="product-info">
-                    <p>${nombre} x ${cantidad}</p>
-                    <p>Precio total: $${precio * cantidad}</p>
-                </div>
-                <button class="small-btn" onclick="modificarCantidad(${id}, 1)">+</button>
-                <button class="small-btn" onclick="modificarCantidad(${id}, -1)">-</button>
-            </li>
-        `).join('')
-        : "<p>El carrito está vacío</p>";
+    ? carrito.map(({ id, nombre, precio, imagen, cantidad }) => `
+        <li class="cart-item">
+            <img src="${imagen}" alt="${nombre}" class="cart-image">
+            <div class="product-info">
+                <p>${nombre} x ${cantidad}</p>
+                <p>Precio total: $${precio * cantidad}</p>
+            </div>
+            <button class="small-btn" onclick="modificarCantidad(${id}, 1)">+</button>
+            <button class="small-btn" onclick="modificarCantidad(${id}, -1)">-</button>
+        </li>
+    `).join('')
+    : "<p>El carrito está vacío</p>";
 
     cartCount.textContent = carrito.reduce((sum, p) => sum + p.cantidad, 0);
     cartCount.style.display = carrito.length ? "block" : "none";
