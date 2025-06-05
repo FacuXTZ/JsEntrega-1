@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Sneaker Jam</title>
+    <link rel="icon" type="image" href="../assets/zapatos icono.ico">
+    <link rel="stylesheet" href="../css/style.css">
+    <script defer src="../js/checkout.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="../index.html">← Volver a la tienda</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="checkout-container">
+            <h2>Resumen de Compra</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="checkout-items"></tbody>
+            </table>
+            <p><strong>Total:</strong> <span id="checkout-total">$0</span></p>
+
+            <h2>Datos de Envío</h2>
+            <form id="formulario-checkout">
+                <input type="text" id="nombre" placeholder="Nombre completo" required>
+                <input type="text" id="direccion" placeholder="Dirección de envío" required>
+                <input type="email" id="email" placeholder="Correo electrónico" required>
+
+                <h2>Método de Pago</h2>
+                <select id="metodo-pago" required>
+                    <option value="tarjeta">Tarjeta de crédito/débito</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="transferencia">Transferencia bancaria</option>
+                </select>
+
+                <div id="datos-tarjeta">
+                    <input type="text" id="numero-tarjeta" placeholder="Número de tarjeta" maxlength="16">
+                    <input type="text" id="fecha-expiracion" placeholder="MM/YY" maxlength="5">
+                    <input type="text" id="cvv" placeholder="CVV" maxlength="3">
+                </div>
+
+                <button type="submit">Finalizar Compra</button>
+            </form>
+        </section>
+
+        <section id="comprobante" class="comprobante-container" style="display: none;">
+            <h2>✅ Compra realizada con éxito</h2>
+            <p>Gracias por tu compra, <span id="comprobante-nombre"></span>!</p>
+            <p>Te enviamos el comprobante a <span id="comprobante-email"></span>.</p>
+            <h3>Detalles de la compra:</h3>
+            <ul id="comprobante-detalles"></ul>
+            <p><strong>Total pagado:</strong> <span id="comprobante-total"></span></p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Sneaker Jam</p>
+    </footer>
+
+</body>
+
+</html>
