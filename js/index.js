@@ -1,13 +1,13 @@
 if (window.location.search.includes("reload=true")) {
-    localStorage.removeItem("carrito"); // Solo borra el carrito, NO productos
-    window.location.href = "../index.html"; // Recarga sin parámetros extra
+    localStorage.removeItem("carrito"); 
+    window.location.href = "../index.html"; 
 }
 
-// Cargar productos desde productos.json
-fetch("./data/productos.json")
+fetch("JsEntrega-1/data/productos.json")
     .then(response => response.json())
-    .then(productos => mostrarProductos(productos))
-    .catch(error => console.error("Error al cargar los productos:", error));
+    .then(data => console.log("Productos cargados:", data))
+    .catch(error => console.error("Error al cargar JSON:", error));
+
 
 actualizarNumeroCarrito();
 
@@ -24,7 +24,6 @@ function mostrarProductos(productos) {
         const tarjeta = document.createElement("div");
         tarjeta.classList.add("producto");
 
-        // Convertir precio a número para evitar problemas
         const precioNumero = parseInt(producto.precio);
 
         tarjeta.innerHTML = `
@@ -99,7 +98,6 @@ const carritoItems = document.getElementById("carrito-items");
 const totalPrecio = document.getElementById("total-precio");
 const vaciarCarritoBtn = document.getElementById("vaciar-carrito");
 
-// Recuperar carrito desde localStorage
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 function actualizarCarrito() {
@@ -134,7 +132,6 @@ function actualizarCarrito() {
     localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-// Modificar cantidad
 function modificarCantidad(index, accion) {
     if (accion === "sumar") {
         carrito[index].cantidad++;
@@ -144,18 +141,15 @@ function modificarCantidad(index, accion) {
     actualizarCarrito();
 }
 
-// Eliminar producto
 function eliminarProducto(index) {
     carrito.splice(index, 1);
     actualizarCarrito();
 }
 
-// Vaciar carrito
 vaciarCarritoBtn.addEventListener("click", () => {
     carrito = [];
     actualizarCarrito();
 });
 
-// Cargar carrito cuando se abre la página
 actualizarCarrito();
 
