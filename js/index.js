@@ -3,7 +3,8 @@ if (window.location.search.includes("reload=true")) {
     window.location.href = "../index.html"; 
 }
 
-fetch("./data/productos.json")
+fetch("https://facuxtz.github.io/data/productos.json")
+
     .then(response => response.json())
     .then(data => console.log("Productos cargados:", data))
     .catch(error => console.error("Error al cargar JSON:", error));
