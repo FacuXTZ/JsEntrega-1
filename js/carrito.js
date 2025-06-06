@@ -39,6 +39,25 @@ function actualizarCarrito() {
     localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
+function agregarAlCarrito(producto) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const productoExistente = carrito.find(item => item.nombre === producto.nombre);
+    if (productoExistente) {
+        productoExistente.cantidad++;
+    } else {
+        carrito.push({ 
+            nombre: producto.nombre, 
+            precio: parseInt(producto.precio), 
+            cantidad: 1, 
+            imagen: `/assets/${producto.imagen}` 
+        });
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    actualizarCarrito();
+}
+
 function modificarCantidad(index, accion) {
     if (accion === "sumar") {
         carrito[index].cantidad++;
