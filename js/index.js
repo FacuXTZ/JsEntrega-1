@@ -3,11 +3,14 @@ if (window.location.search.includes("reload=true")) {
     window.location.href = "../index.html"; 
 }
 
-fetch("https://facuxtz.github.io/data/productos.json")
-
+fetch("./data/productos.json")
     .then(response => response.json())
-    .then(data => console.log("Productos cargados:", data))
-    .catch(error => console.error("Error al cargar JSON:", error));
+    .then(productos => {
+        console.log("✅ Productos cargados:", productos);
+        mostrarProductos(productos);
+    })
+    .catch(error => console.error("❌ Error al cargar JSON:", error));
+
 
 
 actualizarNumeroCarrito();
@@ -147,10 +150,16 @@ function eliminarProducto(index) {
     actualizarCarrito();
 }
 
-vaciarCarritoBtn.addEventListener("click", () => {
-    carrito = [];
-    actualizarCarrito();
+document.addEventListener("DOMContentLoaded", () => {
+    const boton = document.getElementById("nombre_del_elemento");
+    
+    if (boton) {
+        boton.addEventListener("click", () => {
+            console.log("Botón clickeado!");
+        });
+    } else {
+        console.error("Elemento 'nombre_del_elemento' no encontrado en el DOM.");
+    }
 });
 
-actualizarCarrito();
 
