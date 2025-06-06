@@ -36,27 +36,22 @@ function cargarResumenCompra() {
     checkoutTotal.innerText = `$${total}`;
 }
 
-// Cargar resumen de compra al abrir `checkout.html`
 cargarResumenCompra();
 
 formularioCheckout.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    // Obtener datos del usuario
     const nombre = document.getElementById("nombre").value;
     const email = document.getElementById("email").value;
 
-    // Vaciar solo el carrito, pero mantener los productos de la tienda
     localStorage.setItem("carrito", JSON.stringify([]));
 
-    // Mostrar comprobante
     comprobante.style.display = "block";
     comprobanteNombre.innerText = nombre;
     comprobanteEmail.innerText = email;
     comprobanteDetalles.innerHTML = carrito.map(item => `<li>${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}</li>`).join("");
     comprobanteTotal.innerText = checkoutTotal.innerText;
 
-    // Redirigir automáticamente a index.html después de 5 segundos
     setTimeout(() => {
         window.location.href = "../index.html";
     }, 5000);

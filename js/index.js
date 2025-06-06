@@ -3,11 +3,10 @@ if (window.location.search.includes("reload=true")) {
     window.location.href = "../index.html"; 
 }
 
-fetch("https://facuxtz.github.io/data/productos.json")
+fetch("./data/productos.json")
     .then(response => response.json())
-    .then(productos => mostrarProductos(productos))
+    .then(data => console.log("Productos cargados:", data))
     .catch(error => console.error("Error al cargar JSON:", error));
-
 
 
 actualizarNumeroCarrito();
