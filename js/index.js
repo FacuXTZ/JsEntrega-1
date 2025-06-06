@@ -150,16 +150,12 @@ function eliminarProducto(index) {
     actualizarCarrito();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const boton = document.getElementById("nombre_del_elemento");
-    
-    if (boton) {
-        boton.addEventListener("click", () => {
-            console.log("Botón clickeado!");
-        });
-    } else {
-        console.error("Elemento 'nombre_del_elemento' no encontrado en el DOM.");
-    }
-});
+const boton = document.getElementById("nombre_del_elemento");
 
-
+if (boton) {
+    boton.addEventListener("click", () => {
+        console.log("Botón clickeado!");
+    });
+} else {
+    console.error("Elemento 'nombre_del_elemento' no encontrado en el DOM.");
+}
