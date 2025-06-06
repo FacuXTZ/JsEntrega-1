@@ -63,4 +63,3 @@ comprarAhoraBtn.addEventListener("click", () => {
 });
 
 actualizarCarrito();
-
