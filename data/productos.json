@@ -2,26 +2,27 @@
     {
         "nombre": "Adidas Samba XLG",
         "precio": 120000,
-        "imagen": "../assets/Adidas-Samba-XLG-verde-2.webp"
+        "imagen": "https://facuxtz.github.io/assets/J4-GREEN-2.webp"
     },
     {
         "nombre": "DC Green",
         "precio": 60000,
-        "imagen": "../assets/DC-green-1.webp" 
+        "imagen": "https://facuxtz.github.io/assets/J4-GREEN-2.webp"
     },
     {
         "nombre": "Jordan 4 Green",
         "precio": 400000,
-        "imagen": "../assets/J4-GREEN-2.webp"
+        "imagen": "https://facuxtz.github.io/assets/J4-GREEN-2.webp"
     },
     {
         "nombre": "Nike Dunk Low SE Lottery",
         "precio": 150000,
-        "imagen": "../assets/Nike-Dunk-Low-SE-Lottery-2.webp"
+        "imagen": "https://facuxtz.github.io/assets/J4-GREEN-2.webp"
     },
     {
         "nombre": "Under Armour Green",
         "precio": 100000,
-        "imagen": "../assets/UnderArmour-Green-2.webp"
+        "imagen": "https://facuxtz.github.io/assets/J4-GREEN-2.webp"
+
     }
 ]
